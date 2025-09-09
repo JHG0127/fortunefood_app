@@ -10,37 +10,83 @@ class MainScreen extends StatefulWidget {
 class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text('Fortune Food'),
+    Size screenSize = MediaQuery.of(context).size;
+    double screenWidth = screenSize.width;
+    double screenHeight = screenSize.height;
+
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: Colors.white,
-        elevation: 0.2,
-        shadowColor: Colors.grey.shade300,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        appBar: AppBar(
+          centerTitle: true,
+          title: Text('Fortune Food'),
+          backgroundColor: Colors.white,
+          elevation: 0.2,
+          shadowColor: Colors.grey.shade300,
+          leading: Container(),
+        ),
+        body: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // SizedBox(width: 20),
-                Expanded(
-                  flex: 1,
-                  child: Container(
-                    decoration: BoxDecoration(color: Colors.green.shade200),
-                    child: Text('MAP', textAlign: TextAlign.center),
+            Center(
+              child: Container(
+                decoration: BoxDecoration(
+                  // color: Colors.green.shade200,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    color: Colors.green.shade200,
+                    width: screenWidth * 0.009,
                   ),
                 ),
-                // SizedBox(width: 20),
-              ],
+                width: screenWidth * 0.8,
+                height: screenHeight * 0.5,
+                child: Center(child: Text('MAP', textAlign: TextAlign.center)),
+              ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: Icon(Icons.replay_rounded, size: 100),
+            SizedBox(height: screenHeight * 0.024),
+            Text(
+              '아래 버튼을 눌러 맛집을 추천 받으세요.',
+              style: TextStyle(
+                fontSize: screenWidth * 0.04,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: screenHeight * 0.024),
+            ElevatedButton(
+              onPressed: () {
+                print('룰렛 돌리기');
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red.shade100,
+                // foregroundColor: Colors.blue.shade100,
+                minimumSize: Size(screenWidth * 0.6, screenHeight * 0.06),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                ),
+                elevation: 0,
+                shadowColor: Colors.transparent,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisSize: MainAxisSize.min, // Row가 버튼 크기에 맞게
+                children: [
+                  Text(
+                    "룰렛 돌리기",
+                    style: TextStyle(
+                      fontSize: screenWidth * 0.05,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.black,
+                    ),
+                  ),
+                  SizedBox(width: screenWidth * 0.024),
+                  Icon(
+                    Icons.replay_rounded,
+                    size: screenWidth * 0.07,
+                    color: Colors.blue.shade800,
+                  ),
+                ],
+              ),
             ),
           ],
         ),
