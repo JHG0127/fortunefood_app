@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class MainScreen extends StatefulWidget {
   const MainScreen({super.key});
@@ -47,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
             SizedBox(height: screenHeight * 0.024),
             Text(
               '아래 버튼을 눌러 맛집을 추천 받으세요.',
-              style: TextStyle(
+              style: GoogleFonts.nanumGothic(
                 fontSize: screenWidth * 0.04,
                 fontWeight: FontWeight.bold,
               ),
@@ -73,7 +74,7 @@ class _MainScreenState extends State<MainScreen> {
                 children: [
                   Text(
                     "룰렛 돌리기",
-                    style: TextStyle(
+                    style: GoogleFonts.nanumGothic(
                       fontSize: screenWidth * 0.05,
                       fontWeight: FontWeight.w600,
                       color: Colors.black,
